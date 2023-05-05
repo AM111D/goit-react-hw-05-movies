@@ -3,15 +3,25 @@ import { NavLink } from 'react-router-dom';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/trending/all/day?api_key=69130d0521ed03b58ebb84abea94c8b9`
     )
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('The resource you requested could not be found.');
+        }
+        return response.json();
+      })
       .then(data => setMovies(data.results))
-      .catch(error => console.error(error));
+      .catch(error => setError(error.message));
   }, []);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <ul>
