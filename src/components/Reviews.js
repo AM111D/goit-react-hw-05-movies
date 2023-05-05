@@ -25,6 +25,10 @@ const Reviews = () => {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 240);
+  }, [movieReviews]);
   console.log(movieReviews);
   return (
     <div>

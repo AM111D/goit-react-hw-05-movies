@@ -27,7 +27,7 @@ const MovieDetails = () => {
       });
   }, [movieId]);
 
-  console.log(movieDetales);
+  // console.log(movieDetales);
 
   return (
     <div>
