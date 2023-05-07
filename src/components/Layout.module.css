@@ -1,8 +1,20 @@
-.StyledLink {
-    color: #212121;
+.headerList {
+    display: flex;
+    background-color: rgb(232, 215, 219);
+    padding: 20px;
 }
 
-.StyledLink:focus,
-.StyledLink.active {
-    color: blue;
+.headerListItem {
+    
 }
+
+
+.headerListItemLink {
+    padding: 18px;
+    color: rgb(80, 65, 28);
+}
+
+.headerListItemLink:hover {
+    color: rgb(184, 93, 93);
+}
+

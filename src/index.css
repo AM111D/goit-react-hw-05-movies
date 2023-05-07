@@ -20,14 +20,5 @@ ul {
 
 a {
   text-decoration: none;
-
 }
 
-.StyledLink {
-  color: #212121;
-}
-
-.StyledLink:focus,
-.StyledLink.active {
-  color: blue;
-}

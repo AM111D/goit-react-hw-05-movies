@@ -1,19 +1,38 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { Suspense, activeClassName } from 'react';
+// import { styled } from 'react';
+import styled from 'styled-components';
+
 import css from './Layout.module.css';
+
+const StyledNavLink = styled(NavLink)`
+  &.${activeClassName} {
+    color: red;
+    font-weight: bold;
+  }
+`;
 
 const Layout = () => {
   return (
     <div>
       <header>
         <nav>
-          <ul>
-            <li>
-              <NavLink to="/" className={css.StyledLink}>
+          <ul className={css.headerList}>
+            <li className={css.headerListItem}>
+              <NavLink
+                to="/"
+                className={css.headerListItemLink}
+                activeClassName={StyledNavLink}
+              >
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/movies" className={css.StyledLink}>
+              <NavLink
+                to="/movies"
+                className={css.headerListItemLink}
+                activeClassName={StyledNavLink}
+              >
                 Movies
               </NavLink>
             </li>
@@ -21,7 +40,9 @@ const Layout = () => {
         </nav>
       </header>
       <main>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </main>
       <footer>FOOTER</footer>
     </div>

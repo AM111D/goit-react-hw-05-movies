@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useLocation } from 'react';
 import { NavLink } from 'react-router-dom';
+import css from './Home.module.css';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -22,12 +23,16 @@ const Home = () => {
   if (error) {
     return <div>{error}</div>;
   }
+  // console.log(location);
 
   return (
-    <ul>
+    <ul className={css.headerList}>
       {movies.map(movie => (
-        <li key={movie.id}>
-          <NavLink to={`/movies/${movie.id}`}>
+        <li key={movie.id} className={css.headerListItem}>
+          <NavLink
+            to={`/movies/${movie.id}`}
+            className={css.headerListItemLink}
+          >
             {movie.title || movie.name}
           </NavLink>
         </li>

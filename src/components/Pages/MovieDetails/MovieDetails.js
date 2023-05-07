@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 
 const MovieDetails = () => {
   const [movieDetales, setMovieDetails] = useState([]);
   const [error, setError] = useState(null);
 
   const { movieId } = useParams();
+
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     fetch(
@@ -28,11 +31,14 @@ const MovieDetails = () => {
   }, [movieId]);
 
   // console.log(movieDetales);
+  console.log(location);
 
   return (
     <div>
       {Object.keys(movieDetales).length ? (
         <>
+          <Link to={backLinkLocationRef.current}>Back to page with movies</Link>
+          <h2>{movieDetales.title}</h2>
           <img
             src={`https://image.tmdb.org/t/p/w500/${movieDetales.poster_path}`}
             alt={movieDetales.title}
@@ -49,7 +55,7 @@ const MovieDetails = () => {
                 movieDetales.genres.map(genre => {
                   return (
                     <li key={genre.id}>
-                      <p>{genre.name}</p>
+                      <p>-{genre.name}</p>
                     </li>
                   );
                 })}
