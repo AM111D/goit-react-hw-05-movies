@@ -11,7 +11,7 @@ import { lazy } from 'react';
 const Home = lazy(() => import('./Pages/Home/Home'));
 const Movies = lazy(() => import('./Pages/Movies/Movies'));
 const MovieDetails = lazy(() => import('./Pages/MovieDetails/MovieDetails'));
-const Layout = lazy(() => import('./Layout'));
+const Layout = lazy(() => import('./layout'));
 
 const App = () => {
   return (
