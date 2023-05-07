@@ -40,7 +40,7 @@ const MovieDetails = () => {
           />
           <div>
             <h3>{movieDetales.title}</h3>
-            <p>User Score:{Number(movieDetales.vote_average).toFixed(1)}/10</p>
+            <p>User Score: {Number(movieDetales.vote_average).toFixed(1)}/10</p>
             <h3>Overview</h3>
             <p>{movieDetales.overview}</p>
             <h4>Genres</h4>

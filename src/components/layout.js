@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import css from './Layout.module.css';
 
 const Layout = () => {
   return (
@@ -7,10 +8,14 @@ const Layout = () => {
         <nav>
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/" className={css.StyledLink}>
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/movies">Movies</NavLink>
+              <NavLink to="/movies" className={css.StyledLink}>
+                Movies
+              </NavLink>
             </li>
           </ul>
         </nav>
