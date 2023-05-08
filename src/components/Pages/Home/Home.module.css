@@ -1,7 +1,32 @@
-.List{
-    
+.filmList {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+    padding: 0;
 }
 
-.ListItem{}
+.filmListName {
+    /* margin: 0 auto; */
+    text-align: center;
+}
 
-.ListItemLink{}
+.filmListItem {
+    border: 2px solid #d9d9d9;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+.filmListItemLink {
+    display: block;
+    padding: 10px;
+    color: #333;
+    font-size: 17px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.filmListItemLink:hover {
+    color: #8000ff;
+    background-color: #f0f0f0;
+}

@@ -1,0 +1,28 @@
+.movieDetailsImg {
+    float: left;
+    margin-top: 15px;
+    margin-right: 25px;
+}
+
+.backButton {
+    background-color: rgb(99 128 223);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.backButton:hover {
+    background-color: rgb(99 128 223);
+    
+}
+
+.backButtonLink {
+    color: black;
+}
+
+.backButtonLink:hover {
+color: yellow;
+}

@@ -1,5 +1,6 @@
 import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import css from './Movies.module.css';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -38,22 +39,23 @@ const Movies = () => {
 
   console.log(location);
   return (
-    <>
+    <div className={css.SearchList}>
       <div>Search Movies - about movie</div>
       <input type="text" value={query} onChange={updateQueryString} />
-      <button type="button" onClick={() => {}}>
-        Search
-      </button>
       <ul>
         {movies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+          <li key={movie.id} className={css.MovieItem}>
+            <Link
+              to={`/movies/${movie.id}`}
+              state={{ from: location }}
+              className={css.MovieItemLink}
+            >
               {movie.title}
             </Link>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

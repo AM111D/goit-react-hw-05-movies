@@ -5,13 +5,6 @@ import { Suspense } from 'react';
 
 import css from './Layout.module.css';
 
-// const StyledNavLink = styled(NavLink)`
-//   &.${activeClassName} {
-//     color: red;
-//     font-weight: bold;
-//   }
-// `;
-
 const Layout = () => {
   return (
     <div>
@@ -36,7 +29,9 @@ const Layout = () => {
           <Outlet />
         </Suspense>
       </main>
-      <footer>FOOTER</footer>
+      <footer className={css.container}>
+        <span className={css.Footer}></span>
+      </footer>
     </div>
   );
 };

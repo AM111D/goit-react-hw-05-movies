@@ -1,0 +1,12 @@
+.MovieItemLink {
+    margin-left: -20px;
+    color: black;
+}
+
+.MovieItemLink:hover {
+    color: #8000ff;
+}
+
+.SearchList {
+    margin-left: 15px;
+}

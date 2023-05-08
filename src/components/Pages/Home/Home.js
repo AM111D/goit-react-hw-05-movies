@@ -26,18 +26,21 @@ const Home = () => {
   // console.log(location);
 
   return (
-    <ul className={css.headerList}>
-      {movies.map(movie => (
-        <li key={movie.id} className={css.headerListItem}>
-          <NavLink
-            to={`/movies/${movie.id}`}
-            className={css.headerListItemLink}
-          >
-            {movie.title || movie.name}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
+    <>
+      <h2 className={css.filmListName}>Trending movies today </h2>
+      <ul className={css.filmList}>
+        {movies.map(movie => (
+          <li key={movie.id} className={css.filmListItemLink}>
+            <NavLink
+              to={`/movies/${movie.id}`}
+              className={css.filmListItemLink}
+            >
+              {movie.title || movie.name}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
