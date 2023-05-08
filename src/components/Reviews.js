@@ -31,7 +31,7 @@ const Reviews = () => {
   }, [movieReviews]);
   console.log(movieReviews);
   return (
-    error && (
+    error === null && (
       <div>
         <ul>
           {movieReviews.map(movieReview => {

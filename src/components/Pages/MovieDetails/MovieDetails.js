@@ -35,7 +35,7 @@ const MovieDetails = () => {
   console.log(location);
 
   return (
-    error && (
+    error === null && (
       <div>
         {Object.keys(movieDetales).length ? (
           <>
