@@ -39,7 +39,7 @@ const Movies = () => {
 
   console.log(location);
   return (
-    error && (
+    error === null && (
       <div className={css.SearchList}>
         <div>Search Movies - about movie</div>
         <input type="text" value={query} onChange={updateQueryString} />
