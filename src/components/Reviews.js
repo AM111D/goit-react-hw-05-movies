@@ -24,25 +24,27 @@ const Reviews = () => {
         setError(error.message);
         console.log(error);
       });
-  }, []);
+  }, [movieId]);
 
   useEffect(() => {
     window.scrollTo(0, 240);
   }, [movieReviews]);
   console.log(movieReviews);
   return (
-    <div>
-      <ul>
-        {movieReviews.map(movieReview => {
-          return (
-            <li key={movieReview.id}>
-              <h3>{movieReview.author}</h3>
-              <p>{movieReview.content}</p>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    error && (
+      <div>
+        <ul>
+          {movieReviews.map(movieReview => {
+            return (
+              <li key={movieReview.id}>
+                <h3>{movieReview.author}</h3>
+                <p>{movieReview.content}</p>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    )
   );
 };
 

@@ -32,7 +32,7 @@ const Cast = () => {
   }, [moviesCast]);
 
   return (
-    <>
+    error && (
       <div>
         <ul>
           {moviesCast.map(movieCast => {
@@ -55,7 +55,7 @@ const Cast = () => {
           })}
         </ul>
       </div>
-    </>
+    )
   );
 };
 
