@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
+import { Suspense } from 'react';
 import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {
@@ -87,7 +88,9 @@ const MovieDetails = () => {
               </ul>
             </div>
 
-            <Outlet />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Outlet />
+            </Suspense>
           </>
         ) : (
           <p>I'm sorry we didn't find anything for you. Backend broken</p>

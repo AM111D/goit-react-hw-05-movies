@@ -1,6 +1,7 @@
 import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import css from './Movies.module.css';
+import debounce from 'lodash.debounce';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,28 +17,32 @@ const Movies = () => {
       : setSearchParams({ query: evt.target.value });
   };
 
+  const fetchMovies = debounce(searchQuery => {
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=69130d0521ed03b58ebb84abea94c8b9&language=en-US&page=1&include_adult=false&query=${searchQuery}`
+    )
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        setMovies(data.results);
+      })
+      .catch(error => {
+        console.error('Error fetching movie details:', error);
+        setError(error.message);
+      });
+  }, 1000);
+
   useEffect(() => {
     if (query) {
-      fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=69130d0521ed03b58ebb84abea94c8b9&language=en-US&page=1&include_adult=false&query=${query}`
-      )
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          setMovies(data.results);
-        })
-        .catch(error => {
-          console.error('Error fetching movie details:', error);
-          setError(error.message);
-        });
+      fetchMovies(query);
     }
-  }, [query]);
+  }, [query, fetchMovies]);
 
-  console.log(location);
+  // console.log(location);
   return (
     error === null && (
       <div className={css.SearchList}>
