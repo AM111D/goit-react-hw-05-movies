@@ -1,21 +1,15 @@
-import { useSearchParams, Link, useLocation } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import css from './Movies.module.css';
 import debounce from 'lodash.debounce';
+import SearchMovies from '../SearchMovies/SearchMovies';
 
 const Movies = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
-  const location = useLocation();
+  // const location = useLocation();
 
-  const query = searchParams.get('query') ?? '';
-
-  const updateQueryString = evt => {
-    evt.target.value === ''
-      ? setSearchParams({})
-      : setSearchParams({ query: evt.target.value });
-  };
+  const query = useSearchParams().get('query') ?? '';
 
   const fetchMovies = debounce(searchQuery => {
     fetch(
@@ -42,20 +36,14 @@ const Movies = () => {
     }
   }, [query, fetchMovies]);
 
-  // console.log(location);
   return (
     error === null && (
       <div className={css.SearchList}>
-        <div>Search Movies - about movie</div>
-        <input type="text" value={query} onChange={updateQueryString} />
+        <SearchMovies />
         <ul>
           {movies.map(movie => (
             <li key={movie.id} className={css.MovieItem}>
-              <Link
-                to={`/movies/${movie.id}`}
-                state={{ from: location }}
-                className={css.MovieItemLink}
-              >
+              <Link to={`/movies/${movie.id}`} className={css.MovieItemLink}>
                 {movie.title}
               </Link>
             </li>
